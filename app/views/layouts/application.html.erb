@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Evolving Tale</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="navbar navbar-default">
+   <div class="navbar-header">
+     <button class="navbar-toggle" data-target=".navbar-responsive-collapse" data-toggle="collapse" type="button"></button>
+     <a class="navbar-brand" href="#">Evolving Tale</a></div>
+  <div class="navbar-collapse collapse navbar-responsive-collapse">
+    <ul class="nav navbar-nav">
+      <li><a href="#">New Books</a></li>
+      <li><a href="#">Top Authors</a></li>
+      <li><a href="#">Find out more?</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+    <% if user_signed_in? %>
+      <li><%= link_to "Log Out", logout_path %></li>
+         <li><%= link_to current_user.full_name, edit_user_registration_path %></li>
+    <% else %>
+          <li><%= link_to "Register", register_path %></li>
+          <li><%= link_to "Log In", login_path %></li>
+          </ul>
+    <% end %>
+   
+   
+    <form class="navbar-form navbar-left">
+      <input class="form-control col-lg-8" type="text" placeholder="Search"></input>
+    </form>
+
+ </div>
+ </div>
+  
+  <!--Under nav bar-->
+  
+   <div class="container">
+      <p class="notice"><%= notice %></p>                                                                                                                                            
+       <p class="alert"><%= alert %></p>   
+     <%= yield %>
+   </div>
+    
+  
+
+
+</body>
+</html>
